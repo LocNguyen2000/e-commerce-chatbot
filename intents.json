@@ -1,0 +1,36 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+         "responses": ["Hello, I am your Online Shopping Assistant Bots.", "Hello, Good to see you.", "Hi there, how can I help you?."],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time", "Well i am finished"],
+         "responses": ["See you! Thanks for shopping with us.", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "context": [""]
+        },
+        {
+        "tag": "buybooks",
+        "patterns": ["I want to buy a romantic comedy genre book", "I want to buy the newest novel you have", "Do you sell books?", "Can you recommend me some books?"],               
+        "responses": ["Well, here are our list of products.", "Here are some suggestions"],
+        "context": [] 
+        },
+        {
+        "tag": "payment",
+        "patterns": ["How can i pay?", "How much money does this cost?", "Check out please", "I am finished shopping."  ],
+        "responses": ["Here's your payment form."],
+        "context":[]
+        },
+        {
+        "tag": "noanswer",
+        "patterns": [" "],                
+        "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+        "context": [""]
+        }
+   ]
+}

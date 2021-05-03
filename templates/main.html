@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel = "stylesheet" href = "style.css"> -->
+    <title>E-Commerce Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<style>
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-head{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    background: #fbaa33;
+    padding: 10px
+}
+input{
+    width: 30%;
+    margin: 10px;
+    font-size: 15px;
+    padding: 7px 5px;
+    border-radius: 5px;
+    border: 2px solid #e9e8e9;
+}
+input:focus{
+    outline: none;
+}
+.box{
+    display: flex;
+    justify-content: center;
+}
+#conversation-area{
+    width: 50%;
+    height: 100vh;
+    border: 1px solid grey;
+    margin: 10px;
+}
+.message{
+    padding: 5px;
+}
+</style>
+
+<body>
+    <div class = "app-head">Say Hello to Our Online-Shopping Chatbot</div>
+    <div class="app-body">
+        <form id="chat-form">
+            <div class="box">
+                <input type ="text" name ="msg" id = "user-input" placeholder="Enter your message">
+                <button>Submit</button>
+
+            </div>
+        </form>
+        
+        <div class = "box">
+            <div id ="conversation-area">
+                <!-- <span class="message bot">Bot: Hello there.</span> -->
+            </div>
+        </div>
+            
+    </div>
+</body>
+<script>
+    window.onload = function(){
+        chatForm = document.getElementById("chat-form")
+        conversationArea = document.getElementById('conversation-area')
+
+        chatForm.onsubmit = (e) =>{
+            e.preventDefault()
+            let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span><br>` 
+            conversationArea.innerHTML += userInput
+
+            chatForm.msg.value = ""
+
+            $.get('/get', {msg: userInput}).then((data) => {
+                let botOutput = `<span class = "message bot"> Bot: ${data}</span><br>`
+                conversationArea.innerHTML += botOutput
+            })
+        }
+
+    }
+  </script>
+
+</html>
