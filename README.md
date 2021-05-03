@@ -2,6 +2,6 @@
 Using Flask, Jupyter, Tensorflow, Sklearn, NLTK
 
 ## Run Program
-Download 
-Conda install NLTK, Flask, Sklearn, Tensorflow, Keras
+Download \n
+Conda install NLTK, Flask, Sklearn, Tensorflow, Keras \n
 Run Chat_web 
