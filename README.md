@@ -1,4 +1,4 @@
-# e-commerce-chatbot
+# E-Commerce-Chatbot
 Using Flask, Jupyter, Tensorflow, Sklearn, NLTK  
 
 ## Run Program
