@@ -1,11 +1,17 @@
 {"intents": [
         {"tag": "greeting",
          "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello, I am your Online Shopping Assistant Bots.", "Hello, Good to see you.", "Hi there, how can I help you?."],
+         "responses": ["Nice to meet you.", "Hello, Good to see you.", "Hi there, how can I help you?."],
          "context": [""]
         },
+        {
+        "tag": "introduce",
+        "patterns": ["What are you?", "Who are you?", "Can you introduce yourself?", "What's your name?"],                
+        "responses": ["My name is EMO. I am your Online Shopping Assistant." ],
+        "context": [""]  
+        },
         {"tag": "goodbye",
-         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time", "Well i am finished"],
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
          "responses": ["See you! Thanks for shopping with us.", "Have a nice day", "Bye! Come back again soon."],
          "context": [""]
         },
@@ -17,13 +23,13 @@
         {
         "tag": "buybooks",
         "patterns": ["I want to buy a romantic comedy genre book", "I want to buy the newest novel you have", "Do you sell books?", "Can you recommend me some books?"],               
-        "responses": ["Well, here are our list of products.", "Here are some suggestions"],
+        "responses": [" Here are our list of products.", " Here are some suggestions"],
         "context": [] 
         },
         {
         "tag": "payment",
-        "patterns": ["How can i pay?", "How much money does this cost?", "Check out please", "I am finished shopping."  ],
-        "responses": ["Here's your payment form."],
+        "patterns": ["How can i pay?", "I want to pay for this", "How much money does this cost?", "Check out please", "I am finished shopping."  ],
+        "responses": [" Please fill in your payment form."],
         "context":[]
         },
         {

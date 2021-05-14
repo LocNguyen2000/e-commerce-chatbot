@@ -32,32 +32,51 @@ input{
     border-radius: 5px;
     border: 2px solid #e9e8e9;
 }
+button{
+    width: 100px;
+    padding: 10px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 input:focus{
     outline: none;
 }
 .box{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 #conversation-area{
     width: 50%;
     height: 100vh;
     border: 1px solid grey;
     margin: 10px;
+    padding: 10px;
+    overflow-y:scroll;
+    word-break: break-all;
 }
 .message{
     padding: 5px;
+    margin: 5px;
+}
+
+.message.bot{
+    display: flex;
 }
 </style>
 
 <body>
     <div class = "app-head">Say Hello to Our Online-Shopping Chatbot</div>
+    <div>
+        <!-- <a href="./products">Buy Products</a> -->
+    </div>
     <div class="app-body">
         <form id="chat-form">
             <div class="box">
                 <input type ="text" name ="msg" id = "user-input" placeholder="Enter your message">
                 <button>Submit</button>
-
             </div>
         </form>
         
@@ -70,21 +89,70 @@ input:focus{
     </div>
 </body>
 <script>
+
+
     window.onload = function(){
         chatForm = document.getElementById("chat-form")
         conversationArea = document.getElementById('conversation-area')
 
+        
         chatForm.onsubmit = (e) =>{
             e.preventDefault()
-            let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span><br>` 
+            let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
             conversationArea.innerHTML += userInput
 
             chatForm.msg.value = ""
 
-            $.get('/get', {msg: userInput}).then((data) => {
-                let botOutput = `<span class = "message bot"> Bot: ${data}</span><br>`
-                conversationArea.innerHTML += botOutput
+            $.get('/get_bot', {msg: userInput}).done((data) => {
+                console.log(data);
+                data = JSON.parse(data)
+                // console.log(data.value);
+                let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
+                
+                if (data["intent"] == "buybooks"){
+                    let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]}</a></span>`
+                    conversationArea.innerHTML += link
+                }
+                else if (data["intent"] == "goodbye"){
+                    localStorage.clear()
+                    console.log("clear");
+                    let link = `<span class = "message bot"> Bot:  ${data["response"]}</a></span>`
+                    conversationArea.innerHTML += link
+                }
+                else if (data["intent"] == "payment"){    
+                    let link = `<span class = "message bot"> Bot: <a href="./payment"> ${data["response"]}</a></span>`
+                    conversationArea.innerHTML += link
+                }
+                
+                else{
+                    conversationArea.innerHTML += botOutput
+                }
             })
+        }
+        if (localStorage.getItem("products") != undefined){
+            console.log(localStorage.getItem("products"))
+            let items = JSON.parse(localStorage.getItem("products"))
+            let botOutput = `<span class = "message bot"> Bot: You have chose these items: <br> `
+            
+            for (i of items){
+                botOutput += `-  ${i.book} - ${i.author} - ${i.price} VND <br> `  
+            }
+            botOutput += ` </span>`
+            conversationArea.innerHTML += botOutput
+        }
+        if (localStorage.getItem("payment-info") != undefined){
+            let info = JSON.parse(localStorage.getItem("payment-info"))
+            console.log(info);
+
+            let botOutput = `<span class = "message bot">Bot: Thanks for using our Chat System with our Chatbot. <br>
+                - Here is your info: <br>
+                + Name: ${info.userInfo.name} <br>
+                + Address: ${info.userInfo.address} <br>
+                + Phone: ${info.userInfo.phone} <br>
+                + Total Cost: ${info.userInfo.price} VND <br>
+                We will sent a shipper to your locations in around 3-4 days.
+            </span>`
+            conversationArea.innerHTML += botOutput
         }
 
     }

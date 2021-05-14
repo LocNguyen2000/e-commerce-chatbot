@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel = "stylesheet" href = "style.css"> -->
+    <title>E-Commerce Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<style>
+    input{
+        margin: 5px;
+        padding: 10px;
+        width: 250px;
+    }
+</style>
+<body>  
+    
+    <h2>Books Payment Form</h2>
+    <button onclick="window.location.replace('/') ">Return</button>
+    <hr>
+    <form id="payment">
+        <div>
+            <input placeholder=" Enter your name " name = "name">
+        </div>
+        <div>
+            <input placeholder=" Enter your address " name = "address">
+        </div>
+        <div>
+            <input placeholder=" Enter your phone number" name = "phone">
+        </div>
+        <div>
+            <input id = "submit" type="submit" value="Submit">
+        </div>
+        <ul id = "list-items">
+            
+        </ul>
+        <div id = "total"></div>
+    </form>
+
+</body>
+<script>
+    var totalPrice = 0
+    var paymentInfo = {
+        userInfo: null,
+        cartItems: []
+    }
+    var shoppingCart = []
+    window.onload = () =>{
+        
+        let ItemHtml = document.getElementById("list-items") 
+        let totalPriceHtml = document.getElementById("total")
+        let formHtml = document.getElementById("payment")
+
+        formHtml.onsubmit = (e) =>{
+            e.preventDefault()
+            userInfo = {
+                "name": e.target.name.value,
+                "address": e.target.address.value,
+                "phone": e.target.phone.value,
+                "price": totalPrice
+            }
+            paymentInfo.userInfo = userInfo
+            paymentInfo.cartItems = shoppingCart
+            console.log(paymentInfo);
+            localStorage.clear()        
+            localStorage.setItem("payment-info", JSON.stringify(paymentInfo))
+            // alert("")
+            location.replace("/")
+        }
+
+        shoppingCart = JSON.parse(localStorage.getItem("products"))        
+        if (shoppingCart == null) ItemHtml.innerHTML += "You haven't chosen any items."
+        else{    
+            for (i of shoppingCart){
+                totalPrice += JSON.parse(i["price"])
+
+                ItemHtml.innerHTML += `<li>
+                    <div> Book: ${i['book']} </div>
+                    <div> Author: ${i['author']} </div>
+                    <span> Price: ${i['price']} </span>
+                    <hr>
+                </li> `
+            }
+        }
+
+        totalPriceHtml.innerHTML += "Total Price: " + totalPrice  + " VND"
+        
+
+
+        
+
+    }
+</script>

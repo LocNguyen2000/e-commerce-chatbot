@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel = "stylesheet" href = "style.css"> -->
+    <title>E-Commerce Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<style>
+    .header{
+        display: flex;
+        justify-content: center;
+    }
+    .products{
+        width: 80%;
+        height: 50%;
+        overflow: scroll;
+        word-break: break-all;
+    }
+    #cart{        
+        width: 300px;
+    }
+    #products-num{
+        border: 1px solid black;
+        padding: 2px;
+    }
+</style>
+<body>
+    <div class="header">
+        <h2>Books List</h2>
+    </div>
+    <button id = "done-shopping">Done Buying</button>    
+    <select id = "cart" >
+        <option value = "0" disabled selected hidden>Shopping Cart</option>
+    </select>
+    <label id = "products-num">0 Items</label>
+    <hr>
+    <div class="product-list" id = "products">
+        
+    </div>
+</body>
+
+<script>
+    var shoppingCart = []
+    
+    function addToCard(book, author, price){
+        // let p = JSON.parse(product)
+        let p = {
+            "book" : book,
+            "author" : author,
+            "price": price,
+            "number": 1
+        }
+        shoppingCart.push(p)
+        let cartHTML = document.getElementById("cart")
+        let productsNum = document.getElementById("products-num")
+
+        productsNum.innerText = shoppingCart.length + " Items"
+        cartHTML.innerHTML += `<option> ${p.book} - ${p.price} VND</option>`
+        console.log(shoppingCart);
+    }
+
+    let Cards = (product) =>{
+        
+        let p = {
+            "book" : product['book'],
+            "author" : product['author'],
+            "price": product['price']
+        }
+        return `
+                <form class="description">
+                    <p class="title">${p.book}
+                        <div class="author">By: ${p.author}</div>
+                        <div class="price">Price: ${p.price} VND</div>
+                    </p>
+                    <input type = "button" value = "Choose" class = "choose" onclick = "addToCard('${p.book}' , '${p.author}', '${p.price}')">  </input>
+                    <div id = > </div>
+                    <hr>
+                </form>
+        `
+    }
+    window.onload = () =>{
+        let products = document.getElementById('products')
+        $.get("/get_products").then((data) => {
+            console.log(typeof data);
+            data = JSON.parse(data)
+            data.map(d => {
+                products.innerHTML += (Cards(d))
+            })
+        })
+        
+       
+            
+        finishShopBtn = document.getElementById('done-shopping')
+        finishShopBtn.onclick = (e) => {
+            // $.post("")
+            e.preventDefault()
+            if (shoppingCart.length > 0){
+                window.localStorage.setItem("products", JSON.stringify(shoppingCart))
+            }
+            window.location.replace("/")
+        }
+
+
+    }
+</script>
