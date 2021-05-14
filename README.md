@@ -1,5 +1,5 @@
 # E-Commerce-Chatbot
-Using Flask, Jupyter, Tensorflow, Sklearn, NLTK  
+Using Flask, Jupyter, Keras , NLTK  
 
 ## Run Program
 Download  
