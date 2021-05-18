@@ -8,35 +8,137 @@
 
 </head>
 <style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: 'Ubuntu', sans-serif;  
+    }
+    .app-head{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        background: #fbaa33;
+        padding: 15px;
+        color: white;
+        margin-bottom: 10px;
+    }
+    button{
+        margin: 10px;
+        width: 150px;
+        padding: 10px;
+        height: 30px;
+        display: flex;
+        border-radius: 5px;
+        justify-content: center;
+        font-weight: bold;
+        background: #fbaa33;
+        border: none;
+        color: white;
+        align-items: center;
+        transition: width 0.5s ease;
+    }
+    hr{
+        margin-bottom: 20px;
+    }
+    button:hover{
+        width: 180px;
+    }
+    .app-body{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }    
+    .app-body>*{
+        margin-left: 30px;
+    }
+    .info-container{
+        margin-left:30px;
+    }
+    .info-container h2{
+        color:#788195;
+        margin-bottom: 10px;
+    }
+    .info-container label{
+        color:#788195;
+    }
     input{
         margin: 5px;
         padding: 10px;
         width: 250px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: #f1f1f1;
+    }
+    .items-container{
+        width: 40%;
+    }
+    .items-container h2{
+        color:#788195;
+        margin-bottom: 10px;
+    }
+    #list-items{
+        list-style: none;
+        max-height: 200px;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    .total-container h3{
+        color:#788195;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }    
+    .item label{
+        color:#788195;
+        font-weight: bold;
+
+    }
+    .item div{
+        margin-bottom: 3px;
     }
 </style>
 <body>  
     
-    <h2>Books Payment Form</h2>
+    <div class="app-head">
+        <h2>Books Order Form</h2>
+    </div>
     <button onclick="window.location.replace('/') ">Return</button>
     <hr>
-    <form id="payment">
-        <div>
-            <input placeholder=" Enter your name " name = "name">
-        </div>
-        <div>
-            <input placeholder=" Enter your address " name = "address">
-        </div>
-        <div>
-            <input placeholder=" Enter your phone number" name = "phone">
-        </div>
-        <div>
-            <input id = "submit" type="submit" value="Submit">
-        </div>
-        <ul id = "list-items">
+    <div class="app-body">
+        <form class="info-container" id="payment">
+            <h2>Order Info</h2>
+            <div>
+                <label for="name"><b>Name</b></label><br>
+                <input placeholder=" Enter your name " name = "name">
+            </div>
+            <div>
+                <label for="address"><b>Address</b></label> <br>
+                <input placeholder=" Enter your address " name = "address">
+            </div>
+            <div>
+                <label for="phone"><b>Phone</b></label><br>
+                <input placeholder=" Enter your phone number" name = "phone">
+            </div>
+            <div>
+                <button id = "submit" >Submit</button>
+            </div>
             
-        </ul>
-        <div id = "total"></div>
-    </form>
+        </form>
+        <div class="items-container">
+            <h2>Cart Items</h2>
+
+            <ul id = "list-items">
+                
+            </ul>
+        </div>
+        <div class="total-container">
+            <h3>Total Price</h3>
+            <div id = "total"></div>    
+
+        </div>
+    </div>
 
 </body>
 <script>
@@ -46,6 +148,13 @@
         cartItems: []
     }
     var shoppingCart = []
+    function numberWithCommas(x) {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1,$2");
+        return x;
+    }
     window.onload = () =>{
         
         let ItemHtml = document.getElementById("list-items") 
@@ -60,13 +169,19 @@
                 "phone": e.target.phone.value,
                 "price": totalPrice
             }
-            paymentInfo.userInfo = userInfo
-            paymentInfo.cartItems = shoppingCart
-            console.log(paymentInfo);
-            localStorage.clear()        
-            localStorage.setItem("payment-info", JSON.stringify(paymentInfo))
-            // alert("")
-            location.replace("/")
+            if ((userInfo.name != "") && (userInfo.address != "") && (userInfo.address != "" ) && (userInfo.price != 0)){
+                paymentInfo.userInfo = userInfo
+                paymentInfo.cartItems = shoppingCart
+                console.log(paymentInfo);
+                localStorage.clear()        
+                localStorage.setItem("payment-info", JSON.stringify(paymentInfo))
+                // alert("")
+                location.replace("/")
+            }
+            else{
+                alert("An error has occur.")
+            }
+            
         }
 
         shoppingCart = JSON.parse(localStorage.getItem("products"))        
@@ -75,16 +190,25 @@
             for (i of shoppingCart){
                 totalPrice += JSON.parse(i["price"])
 
-                ItemHtml.innerHTML += `<li>
-                    <div> Book: ${i['book']} </div>
-                    <div> Author: ${i['author']} </div>
-                    <span> Price: ${i['price']} </span>
+                ItemHtml.innerHTML += `<li class = "item">
+                    <div> 
+                        <label>Book </label> <br>
+                        ${i['book']} 
+                    </div>
+                    <div> 
+                        <label>Author </label><br>
+                        ${i['author']} 
+                    </div>
+                    <div> 
+                        <label> Price </label><br> 
+                        ${numberWithCommas(i['price'])} VND
+                    </div>
                     <hr>
                 </li> `
             }
         }
 
-        totalPriceHtml.innerHTML += "Total Price: " + totalPrice  + " VND"
+        totalPriceHtml.innerHTML +=  numberWithCommas(totalPrice)  + " VND"
         
 
 

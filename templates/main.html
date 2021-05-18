@@ -13,22 +13,24 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .app-head{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    background: #fbaa33;
-    padding: 10px
-}
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        background: #fbaa33;
+        padding: 15px;
+        color: white;
+        margin-bottom: 10px;
+    }
 input{
     width: 30%;
     margin: 10px;
     font-size: 15px;
-    padding: 7px 5px;
+    padding: 10px 8px;
     border-radius: 5px;
     border: 2px solid #e9e8e9;
 }
@@ -37,9 +39,21 @@ button{
     padding: 10px;
     height: 30px;
     display: flex;
+    border-radius: 5px;
     justify-content: center;
+    font-weight: bold;
+    background: #fbaa33;
+    border: none;
+    color: white;
     align-items: center;
+    width: 100px;
+    transition: width 0.5s ease;
 }
+button:hover{
+    cursor:pointer;
+    width: 150px;
+}
+
 input:focus{
     outline: none;
 }
@@ -48,39 +62,72 @@ input:focus{
     justify-content: center;
     align-items: center;
 }
+.chat-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.name{
+    color: white;
+    width: 50%;
+    background:#fbaa33 ;
+    padding: 15px;
+    font-weight: bold;
+}
 #conversation-area{
     width: 50%;
-    height: 100vh;
-    border: 1px solid grey;
-    margin: 10px;
-    padding: 10px;
-    overflow-y:scroll;
-    word-break: break-all;
+    height: 60vh;
+    border: 0.5px solid grey;
+    padding: 20px;
+    overflow-y: scroll;
+    word-break: keep-all;
+
 }
 .message{
-    padding: 5px;
-    margin: 5px;
+    display: block;
+    min-width: 150px;
+    margin-bottom: 10px;
+    max-width: 50%;
+    min-height: 40px;
+    padding: 10px; 
+    line-height: 20px;
+    font-size: 16px;
+    background:#3E4042;
+    color: #ffffff;
+    border-radius: 5px;
 }
 
-.message.bot{
-    display: flex;
+.message.user{
+    background: #fbaa33;
+}
+.message a{
+    color: white;
+    text-decoration: none;
+}
+
+.message a:hover{
+    cursor:pointer;
 }
 </style>
 
 <body>
-    <div class = "app-head">Say Hello to Our Online-Shopping Chatbot</div>
-    <div>
-        <!-- <a href="./products">Buy Products</a> -->
+    <div class = "app-head">
+        <h2>  Online Shopping Chatbot Website</h2>  
     </div>
+    
     <div class="app-body">
         <form id="chat-form">
+            
             <div class="box">
-                <input type ="text" name ="msg" id = "user-input" placeholder="Enter your message">
+                <input type ="text" name ="msg" id = "user-input" placeholder="Enter your message ">
                 <button>Submit</button>
             </div>
         </form>
-        
-        <div class = "box">
+        <div>
+        </div>
+        <div class = "chat-box">
+            <span class="name">ECOM Chatbot</span>
             <div id ="conversation-area">
                 <!-- <span class="message bot">Bot: Hello there.</span> -->
             </div>
@@ -89,7 +136,13 @@ input:focus{
     </div>
 </body>
 <script>
-
+    function numberWithCommas(x) {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1,$2");
+        return x;
+    }
 
     window.onload = function(){
         chatForm = document.getElementById("chat-form")
@@ -98,47 +151,51 @@ input:focus{
         
         chatForm.onsubmit = (e) =>{
             e.preventDefault()
-            let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
-            conversationArea.innerHTML += userInput
+            if (chatForm.msg.value != ""){
 
-            chatForm.msg.value = ""
+                let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
+                conversationArea.innerHTML += userInput
 
-            $.get('/get_bot', {msg: userInput}).done((data) => {
-                console.log(data);
-                data = JSON.parse(data)
-                // console.log(data.value);
-                let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
+                chatForm.msg.value = ""
                 
-                if (data["intent"] == "buybooks"){
-                    let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]}</a></span>`
-                    conversationArea.innerHTML += link
-                }
-                else if (data["intent"] == "goodbye"){
-                    localStorage.clear()
-                    console.log("clear");
-                    let link = `<span class = "message bot"> Bot:  ${data["response"]}</a></span>`
-                    conversationArea.innerHTML += link
-                }
-                else if (data["intent"] == "payment"){    
-                    let link = `<span class = "message bot"> Bot: <a href="./payment"> ${data["response"]}</a></span>`
-                    conversationArea.innerHTML += link
-                }
-                
-                else{
-                    conversationArea.innerHTML += botOutput
-                }
-            })
+                $.get('/get_bot', {msg: userInput}).done((data) => {
+                    console.log(data);
+                    data = JSON.parse(data)
+                    // console.log(data.value);
+                    let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
+                    
+                    if (data["intent"] == "buybooks"){
+                        let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]} Click here.</a></span>`
+                        conversationArea.innerHTML += link
+                    }
+                    else if (data["intent"] == "goodbye"){
+                        localStorage.clear()
+                        console.log("clear");
+                        let link = `<span class = "message bot"> Bot:  ${data["response"]}</a></span>`
+                        conversationArea.innerHTML += link
+                    }
+                    else if (data["intent"] == "payment"){    
+                        let link = `<span class = "message bot"> Bot: <a href="./payment"> ${data["response"]} Click here </a></span>`
+                        conversationArea.innerHTML += link
+                    }
+                    
+                    else{
+                        conversationArea.innerHTML += botOutput
+                    }
+                })
+            }
         }
         if (localStorage.getItem("products") != undefined){
             console.log(localStorage.getItem("products"))
             let items = JSON.parse(localStorage.getItem("products"))
-            let botOutput = `<span class = "message bot"> Bot: You have chose these items: <br> `
+            let botOutput = `<span class = "message bot"> Bot: You have chosen these items: <br> `
             
             for (i of items){
-                botOutput += `-  ${i.book} - ${i.author} - ${i.price} VND <br> `  
+                botOutput += `-  ${i.book} - ${i.author} - ${numberWithCommas(i.price)} VND. <br> `  
             }
-            botOutput += ` </span>`
+            botOutput += `</span>`
             conversationArea.innerHTML += botOutput
+            conversationArea.innerHTML += `<span class = "message bot">Bot: If you want to order these items.<br> Ask me: "How do i order?" </span>` 
         }
         if (localStorage.getItem("payment-info") != undefined){
             let info = JSON.parse(localStorage.getItem("payment-info"))
@@ -149,10 +206,12 @@ input:focus{
                 + Name: ${info.userInfo.name} <br>
                 + Address: ${info.userInfo.address} <br>
                 + Phone: ${info.userInfo.phone} <br>
-                + Total Cost: ${info.userInfo.price} VND <br>
-                We will sent a shipper to your locations in around 3-4 days.
+                + Total Cost: ${numberWithCommas(info.userInfo.price)} VND <br>
             </span>`
             conversationArea.innerHTML += botOutput
+            conversationArea.innerHTML += `<span class = "message bot">Bot: We will sent a shipper to your locations in around 3-4 days. We accept payment with cash only.</span>`
+            conversationArea.innerHTML += `<span class = "message bot">Bot: You can reset conversation with "Good bye".</span>`
+
         }
 
     }
