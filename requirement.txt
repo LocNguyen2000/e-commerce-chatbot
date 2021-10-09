@@ -1,0 +1,7 @@
+nltk
+keras
+numpy
+flask
+flask_cors 
+
+# tensorflow
