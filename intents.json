@@ -1,41 +1,41 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Nice to meet you.", "Hello, Good to see you.", "Top of the morning."],
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hi", "Hello there", "Hya", "Hya there", "Is anyone there?", "Hello how are you", "Hi how do you do",],
+         "responses": ["Nice to meet you.", "Hello, Good to see you.", "Hi! What can I do for you?", "Hi! How can I help?", "Hello! How can I help?", "Hola! How can I help?", "Hello, thanks for visiting.",],
          "context": [""]
         },
         {
         "tag": "introduce",
         "patterns": ["What are you?", "Who are you?", "Can you introduce yourself?", "What's your name?"],                
-        "responses": ["My name is ECOM. I am your Online Shopping Assistant." ],
+        "responses": ["My name is ECOM. I am your Online Shopping Assistant."],
         "context": [""]  
         },
         {"tag": "goodbye",
-         "patterns": ["Bye", "See you later", "Goodbye", "Till next time"],
+         "patterns": ["Bye", "See you later", "Goodbye", "Till next time", "Adios", "See you later", "Thanks, bye", "Thanks for the help, goodbye", "Thank you, bye", "Thank you, goodbye", "Thanks goodbye", "Thanks that's all I needed to see"],
          "responses": ["See you! Thanks for shopping with us.", "Have a nice day", "Bye! Come back again soon."],
          "context": [""]
         },
         {"tag": "thanks",
-         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
-         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me", "OK thank you", "OK thanks", "OK", "That's helpful", "Thanks a lot"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure", "No problem!"],
          "context": [""]
         },
         {
         "tag": "buybooks",
-        "patterns": ["I want to buy a romantic comedy genre book", "I want to buy the newest novel you have","What books do you have?", "Do you sell books?", "Can you recommend me some books?"],               
-        "responses": [" Here are our list of products.", " Here are some suggestions."],
+        "patterns": ["I want to buy a novel.", "I want to buy the newest lipstick you have", "What kinds of lip gloss do you have?", "Do you sell shoes?", "Can you recommend me some shirts?", "I wanna buy an iPhone.", "I want a pair of headphones.", "Get me a watch please.", "Do you have any lotion?", "I need a laptop.", "I'm looking for a camera.", "I want to purchase a rice cooker.", "A horror book please.", "Show me some high heels you got.", "Do you sell bracelets too?", "What toys for children do you have?", "How about shampoo?", "Suggest some moisturizers.", "Are there some sunglasses?", "Can you sell some frying pans or pots for me?", "A prom dress would be nice.", "What about a vest?"],
+        "responses": ["Here are our list of products.", "Here are some suggestions."],
         "context": [] 
         },
         {
         "tag": "payment",
-        "patterns": ["How can i pay?", "I want to pay for this", "I want to order", "How do i order?", "How much money does this cost?", "Check out please"],
-        "responses": [" Please fill in your order form."],
+        "patterns": ["How can i pay?", "I want to pay for this", "I want to order", "How do i order?", "How much money does this cost?", "Check out please", "Do you take credit cards?", "Do you accept Mastercard?", "Can I pay with Paypal?", "Are you cash only?"],
+        "responses": ["We accept VISA, Mastercard and Paypal. Please fill in your order form."],
         "context":[]
         },
         {
         "tag": "noanswer",
         "patterns": [" "],                
-        "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+        "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "Sorry, I didn't get that, can you be more specific?"],
         "context": [""]
         }
    ]
