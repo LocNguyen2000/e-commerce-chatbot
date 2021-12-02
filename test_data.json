@@ -1,0 +1,102 @@
+[
+    [
+        "Hello shop", 
+        "greeting"
+    ], 
+    [
+        "Hi shop", 
+        "greeting"
+    ], 
+    [
+        "Greetings shop", 
+        "greeting"
+    ], 
+    [
+        "Hey chatbot", 
+        "greeting"
+    ], 
+    [
+        "What is your name", 
+        "introduce"
+    ], 
+    [
+        "Bye shop", 
+        "goodbye"
+    ], 
+    [
+        "Goodbye chatbot", 
+        "goodbye"
+    ], 
+    [
+        "See you next time", 
+        "goodbye"
+    ], 
+    [
+        "Thank you goodbye", 
+        "goodbye"
+    ], 
+    [
+        "Thank you very much", 
+        "thanks"
+    ], 
+    [
+        "Thanks that is helpful", 
+        "thanks"
+    ], 
+    [
+        "Thank you for helping me", 
+        "thanks"
+    ], 
+    [
+        "OK that's great", 
+        "thanks"
+    ], 
+    [
+        "I'm buying a smart phone", 
+        "buyproduct"
+    ], 
+    [
+        "I want a pair of jeans", 
+        "buyproduct"
+    ]
+	[
+        "I want a jacket", 
+        "buyproduct"
+    ], 
+    [
+        "What books do you sell?", 
+        "buyproduct"
+    ],
+	[
+        "I will purchase some lip gloss please.", 
+        "buyproduct"
+    ], 
+    [
+        "Recommend some laptops please", 
+        "buyproduct"
+    ],
+	[
+        "What shoes do you have in store?", 
+        "buyproduct"
+    ],
+	[
+        "Do you have some novels?", 
+        "buyproduct"
+    ],
+	[
+        "I wanna buy a pair of sunglasses", 
+        "buyproduct"
+    ], 
+    [
+        "How do I order?", 
+        "payment"
+    ],
+	[
+        "I want to check out", 
+        "payment"
+    ], 
+    [
+        "What credit cards do you accept?", 
+        "payment"
+    ]
+]
