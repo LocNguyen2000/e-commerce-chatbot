@@ -1,7 +1,7 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hi", "Hello there", "Hya", "Hya there", "Is anyone there?", "Hello how are you", "Hi how do you do",],
-         "responses": ["Nice to meet you.", "Hello, Good to see you.", "Hi! What can I do for you?", "Hi! How can I help?", "Hello! How can I help?", "Hola! How can I help?", "Hello, thanks for visiting.",],
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hi", "Hello there", "Hya", "Hya there", "Is anyone there?", "Hello how are you", "Hi how do you do"],
+         "responses": ["Nice to meet you.", "Hello, Good to see you.", "Hi! What can I do for you?", "Hi! How can I help?", "Hello! How can I help?", "Hola! How can I help?", "Hello, thanks for visiting."],
          "context": [""]
         },
         {
@@ -21,7 +21,7 @@
          "context": [""]
         },
         {
-        "tag": "buybooks",
+        "tag": "buyproduct",
         "patterns": ["I want to buy a novel.", "I want to buy the newest lipstick you have", "What kinds of lip gloss do you have?", "Do you sell shoes?", "Can you recommend me some shirts?", "I wanna buy an iPhone.", "I want a pair of headphones.", "Get me a watch please.", "Do you have any lotion?", "I need a laptop.", "I'm looking for a camera.", "I want to purchase a rice cooker.", "A horror book please.", "Show me some high heels you got.", "Do you sell bracelets too?", "What toys for children do you have?", "How about shampoo?", "Suggest some moisturizers.", "Are there some sunglasses?", "Can you sell some frying pans or pots for me?", "A prom dress would be nice.", "What about a vest?"],
         "responses": ["Here are our list of products.", "Here are some suggestions."],
         "context": [] 
