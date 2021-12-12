@@ -160,11 +160,11 @@
             x = x.replace(pattern, "$1,$2");
         return x;
     }
-    function addToCard(book, author, price) {
+    function addToCard(product, type, price) {
         // let p = JSON.parse(product)
         let p = {
-            "book": book,
-            "author": author,
+            "product": product,
+            "type": type,
             "price": price,
             "number": 1
         }
@@ -173,25 +173,25 @@
         let productsNum = document.getElementById("products-num")
 
         productsNum.innerText = shoppingCart.length + " Items"
-        cartHTML.innerHTML += `<option> ${p.book} - ${numberWithCommas(p.price)} VND</option>`
-        alert(`You have picked ${p.book}.`)
+        cartHTML.innerHTML += `<option> ${p.product} - ${numberWithCommas(p.price)} VND</option>`
+        alert(`You have picked ${p.product}.`)
         console.log(shoppingCart);
     }
 
     let Cards = (product) => {
 
         let p = {
-            "book": product['book'],
-            "author": product['author'],
+            "product": product['product'],
+            "type": product['type'],
             "price": product['price']
         }
         return `
                 <form class="card">
-                    <h2>${p.book}</h2>                        
-                    <div class="author">By: ${p.author}</div>
+                    <h2>${p.product}</h2>                        
+                    <div class="author">Type: ${p.type}</div>
                     <div class="price"> ${numberWithCommas(p.price)} VND</div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quod libero dolor. </p>
-                    <input type = "button" value = "Add to Cart" class = "choose" onclick = "addToCard('${p.book}' , '${p.author}', '${p.price}')">  </input>
+                    <input type = "button" value = "Add to Cart" class = "choose" onclick = "addToCard('${p.product}' , '${p.type}', '${p.price}')">  </input>
                     <hr>
                 </form>
         `

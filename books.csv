@@ -1,11 +1,22 @@
-id,book-name,author,price
-101,The Lord of the Rings,J.R.R. Tolkien,599999
-102,The Kite Runner,Khaled Hosseini,649999
-103,Harry Potter and the Philosopher Stone,J.K. Rowling,549999
-104,Slaughterhouse-Five,Kurt Vonnegut,549999
-105,"The Lion, the Witch, and the Wardrobe",C.S. Lewis,549999
-106,To Kill a Mockingbird,Harper Lee,599999
-107,The Book Thief,Markus Zusak,499999
-108,Wuthering Heights,Emily Bronte,649999
-109,The Catcher in the Rye,J.D. Salinger,449999
-110,Animal Farm,George Orwell,499999
+id,products,type,price
+101,The Lord of the Rings,Books and Novels,599999
+102,The Kite Runner,Books and Novels,649999
+103,Harry Potter and the Philosopher Stone,Books and Novels,549999
+104,Slaughterhouse-Five,Books and Novels,549999
+105,"The Lion, the Witch, and the Wardrobe",Books and Novels,549999
+106,To Kill a Mockingbird,Books and Novels,599999
+107,The Book Thief,Books and Novels,499999
+108,Wuthering Heights,Books and Novels,649999
+109,The Catcher in the Rye,Books and Novels,449999
+110,Animal Farm,Books and Novels,499999
+110,Laptop Thinkpad Yoga 12,Laptops,10000000
+111,Dell Vostro 5310,Laptops,18000000
+112,Dell Vostro 5459,Laptops,13000000
+113,Laptop Lenovo Ideapad 1,Laptops,9139000
+114,Laptop Lenovo IdeaPad Gaming 3,Laptops,26058000
+115,Laptop Lenovo Yoga Slim 7,Laptops,25550000
+116,Nike Air Force 1 Fontaka,Shoes,3239000
+117,Nike Air Force 1 '07,Shoes,2649000
+118,Nike Force 1 LE,Shoes,1579000
+119,Nike Air Force 1 Shadow,Shoes,3519000
+120,Nike Force 1 Crater,Shoes,1527000

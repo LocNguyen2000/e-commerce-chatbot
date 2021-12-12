@@ -137,7 +137,7 @@
         <form id="chat-form">
 
             <div class="box">
-                <input type="text" name="msg" id="user-input" placeholder="Enter your message ">
+                <input type="text" name="msg" id="user-input" placeholder="Enter here.Try 'Hello' ">
                 <button>Submit</button>
             </div>
         </form>
@@ -212,7 +212,7 @@
             let botOutput = `<span class = "message bot"> Bot: You have chosen these items: <br> `
 
             for (i of items) {
-                botOutput += `-  ${i.book} - ${i.author} - ${numberWithCommas(i.price)} VND. <br> `
+                botOutput += `-  ${i.product} - ${i.type} - ${numberWithCommas(i.price)} VND. <br> `
             }
             botOutput += `</span>`
             conversationArea.innerHTML += botOutput
