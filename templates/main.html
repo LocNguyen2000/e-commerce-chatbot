@@ -18,12 +18,13 @@
         font-family: 'Ubuntu', sans-serif;
     }
 
+    
     .app-head {
         width: 100%;
         display: flex;
         justify-content: center;
         font-weight: bold;
-        background: #fbaa33;
+        background: rgb(30, 87, 161);
         padding: 15px;
         color: white;
         margin-bottom: 10px;
@@ -46,7 +47,7 @@
         border-radius: 5px;
         justify-content: center;
         font-weight: bold;
-        background: #f75454;
+        background: rgb(30, 87, 161);
         border: none;
         color: white;
         align-items: center;
@@ -77,20 +78,25 @@
     }
 
     .name {
-        color: black;
+        display: inline;
+        color: rgb(30, 87, 161);
         width: 80%;
         padding: 15px;
         font-weight: bold;
+    }
+    .name *{
+        padding-right: 15px;
+        text-decoration: none;
+        color: rgb(30, 87, 161);
     }
 
     #conversation-area {
         width: 80%;
         height: 60vh;
-        border: 0.5px solid grey;
+        border: 0.5px solid rgb(226, 218, 218);
         padding: 20px;
         overflow-y: scroll;
         word-break: keep-all;
-        background-color: lightblue;
     }
 
     .message {
@@ -102,13 +108,14 @@
         padding: 10px;
         line-height: 20px;
         font-size: 16px;
-        background: #f75454;
+        background: grey;
         color: black;
         border-radius: 5px;
     }
 
     .message.user {
-        background: royalblue;
+        background: rgb(30, 87, 161);
+        color: white;
     }
 
     .message a {
@@ -137,7 +144,11 @@
         <div>
         </div>
         <div class="chat-box">
-            <span class="name">ECOM Chatbot</span>
+            <span class="name">
+                <a>ECOM Chatbot</a>
+                <a href="/products">Products</a>
+                <a href="/payment">Payment</a>
+            </span>
             <div id="conversation-area">
                 <!-- <span class="message bot">Bot: Hello there.</span> -->
             </div>
@@ -161,10 +172,9 @@
 
         chatForm.onsubmit = (e) => {
             e.preventDefault()
+            if (chatForm.msg.value != "") {
 
-            if (chatForm.msg.value != ""){
-                let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
-
+                let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>`
                 conversationArea.innerHTML += userInput
 
                 chatForm.msg.value = ""
@@ -174,12 +184,8 @@
                     data = JSON.parse(data)
                     // console.log(data.value);
                     let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
-
                     
                     if (data["intent"] == "buyproduct"){
-
-
-
                         let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]} Click here.</a></span>`
                         conversationArea.innerHTML += link
                     }
