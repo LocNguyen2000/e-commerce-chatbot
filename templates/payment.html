@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -9,13 +10,14 @@
 
 </head>
 <style>
-    *{
+    * {
         padding: 0px;
         margin: 0px;
         box-sizing: border-box;
-        font-family: 'Ubuntu', sans-serif;  
+        font-family: 'Ubuntu', sans-serif;
     }
-    .app-head{
+
+    .app-head {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -25,7 +27,8 @@
         color: white;
         margin-bottom: 10px;
     }
-    button{
+
+    button {
         margin: 10px;
         width: 150px;
         padding: 10px;
@@ -34,74 +37,89 @@
         border-radius: 5px;
         justify-content: center;
         font-weight: bold;
-        background: #fbaa33;
+        background: grey;
         border: none;
         color: white;
         align-items: center;
         transition: width 0.5s ease;
     }
-    hr{
+
+    hr {
         margin-bottom: 20px;
     }
-    button:hover{
+
+    button:hover {
         width: 180px;
     }
-    .app-body{
+
+    .app-body {
         width: 100%;
         display: flex;
         flex-direction: row;
-    }    
-    .app-body>*{
+    }
+
+    .app-body>* {
         margin-left: 30px;
     }
-    .info-container{
-        margin-left:30px;
+
+    .info-container {
+        margin-left: 30px;
     }
-    .info-container h2{
-        color:#788195;
+
+    .info-container h2 {
+        color: black;
         margin-bottom: 10px;
     }
-    .info-container label{
-        color:#788195;
+
+    .info-container label {
+        color: black;
+
     }
-    input{
+
+    input {
         margin: 5px;
         padding: 10px;
         width: 250px;
         border-radius: 5px;
         outline: none;
         border: none;
-        background: #f1f1f1;
     }
-    .items-container{
+
+    .items-container {
         width: 40%;
     }
-    .items-container h2{
-        color:#788195;
+
+    .items-container h2 {
+        color: black;
         margin-bottom: 10px;
     }
-    #list-items{
+
+    #list-items {
         list-style: none;
         max-height: 200px;
         width: 100%;
         overflow-y: scroll;
     }
-    .total-container h3{
-        color:#788195;
+
+    .total-container h3 {
+        color: black;
         margin-bottom: 10px;
         font-weight: bold;
-    }    
-    .item label{
-        color:#788195;
+    }
+
+    .item label {
+        color: black;
         font-weight: bold;
 
     }
-    .item div{
+
+    .item div {
         margin-bottom: 3px;
     }
 </style>
-<body>  
-    
+
+<body>
+
     <div class="app-head">
         <h2>Books Order Form</h2>
     </div>
@@ -112,31 +130,31 @@
             <h2>Order Info</h2>
             <div>
                 <label for="name"><b>Name</b></label><br>
-                <input placeholder=" Enter your name " name = "name">
+                <input placeholder=" Enter your name " name="name">
             </div>
             <div>
                 <label for="address"><b>Address</b></label> <br>
-                <input placeholder=" Enter your address " name = "address">
+                <input placeholder=" Enter your address " name="address">
             </div>
             <div>
                 <label for="phone"><b>Phone</b></label><br>
-                <input placeholder=" Enter your phone number" name = "phone">
+                <input placeholder=" Enter your phone number" name="phone">
             </div>
             <div>
-                <button id = "submit" >Submit</button>
+                <button id="submit">Submit</button>
             </div>
-            
+
         </form>
         <div class="items-container">
             <h2>Cart Items</h2>
 
-            <ul id = "list-items">
-                
+            <ul id="list-items">
+
             </ul>
         </div>
         <div class="total-container">
             <h3>Total Price</h3>
-            <div id = "total"></div>    
+            <div id="total"></div>
 
         </div>
     </div>
@@ -156,13 +174,13 @@
             x = x.replace(pattern, "$1,$2");
         return x;
     }
-    window.onload = () =>{
-        
-        let ItemHtml = document.getElementById("list-items") 
+    window.onload = () => {
+
+        let ItemHtml = document.getElementById("list-items")
         let totalPriceHtml = document.getElementById("total")
         let formHtml = document.getElementById("payment")
 
-        formHtml.onsubmit = (e) =>{
+        formHtml.onsubmit = (e) => {
             e.preventDefault()
             userInfo = {
                 "name": e.target.name.value,
@@ -170,25 +188,25 @@
                 "phone": e.target.phone.value,
                 "price": totalPrice
             }
-            if ((userInfo.name != "") && (userInfo.address != "") && (userInfo.address != "" ) && (userInfo.price != 0)){
+            if ((userInfo.name != "") && (userInfo.address != "") && (userInfo.address != "") && (userInfo.price != 0)) {
                 paymentInfo.userInfo = userInfo
                 paymentInfo.cartItems = shoppingCart
                 console.log(paymentInfo);
-                localStorage.clear()        
+                localStorage.clear()
                 localStorage.setItem("payment-info", JSON.stringify(paymentInfo))
                 // alert("")
                 location.replace("/")
             }
-            else{
+            else {
                 alert("An error has occur.")
             }
-            
+
         }
 
-        shoppingCart = JSON.parse(localStorage.getItem("products"))        
+        shoppingCart = JSON.parse(localStorage.getItem("products"))
         if (shoppingCart == null) ItemHtml.innerHTML += "You haven't chosen any items."
-        else{    
-            for (i of shoppingCart){
+        else {
+            for (i of shoppingCart) {
                 totalPrice += JSON.parse(i["price"])
 
                 ItemHtml.innerHTML += `<li class = "item">
@@ -209,11 +227,11 @@
             }
         }
 
-        totalPriceHtml.innerHTML +=  numberWithCommas(totalPrice)  + " VND"
-        
+        totalPriceHtml.innerHTML += numberWithCommas(totalPrice) + " VND"
 
 
-        
+
+
 
     }
 </script>
