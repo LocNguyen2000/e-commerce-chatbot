@@ -98,5 +98,105 @@
     [
         "What credit cards do you accept?", 
         "payment"
+    ],
+    [
+        "Good job",
+        "thanks"
+    ],
+    [
+        "Nice job",
+        "thanks"
+    ],
+    [
+        "Do you have any kinds of laptop?",
+        "buyproduct"
+    ],
+    [
+        "what do you sell?",
+        "buyproduct"
+    ],
+    [
+        "Tell me who you are",
+        "introduce"
+    ],
+    [
+        "What are you",
+        "introduce"
+    ],
+    [
+        "Hey, chatbot",
+        "greeting"
+    ],
+    [
+        "Good",
+        "thanks"
+    ],
+    [
+        "Hello",
+        "greeting"
+    ],
+    [
+        "I will buy these novels",
+        "payment"
+    ],
+    [
+        "Bye chatbot",
+        "goodbye"
+    ],
+    [
+        "This is good",
+        "thanks"
+    ],
+    [
+        "Nice",
+        "thanks"
+    ],
+    [
+        "How do I pay for these novels?",
+        "payment"
+    ],
+    [
+        "What kind of laptop do you sell",
+        "buyproduct"
+    ],
+    [
+        "Introduce yourself",
+        "introduce"
+    ],
+    [
+        "Nice to meet you",
+        "greeting"
+    ],
+    [
+        "Recommend somethings that you sell",
+        "buyproduct"
+    ],
+    [
+        "Your name is ?",
+        "introduce"
+    ],
+    [
+        "which payment methods do you accept?",
+        "payment"
+    ],
+    [
+        "I only have credit card",
+        "payment"
+    ],
+    [
+        "Can I pay in cash ?",
+        "payment"
+    ],
+    [
+        "Great!",
+        "thanks"
+    ],
+    [
+        "what phones do you sell ?",
+        "buyproduct"
+    ],
+    [
+        "Hi",
+        "greeting"
     ]
 ]

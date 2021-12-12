@@ -161,14 +161,10 @@
 
         chatForm.onsubmit = (e) => {
             e.preventDefault()
-<<<<<<< HEAD
+
             if (chatForm.msg.value != ""){
                 let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
-=======
-            if (chatForm.msg.value != "") {
 
-                let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>`
->>>>>>> e0ce8f0e5ea06d6caeba1ba45eaf2a918be556ed
                 conversationArea.innerHTML += userInput
 
                 chatForm.msg.value = ""
@@ -178,13 +174,12 @@
                     data = JSON.parse(data)
                     // console.log(data.value);
                     let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
-<<<<<<< HEAD
+
                     
                     if (data["intent"] == "buyproduct"){
-=======
 
-                    if (data["intent"] == "buybooks") {
->>>>>>> e0ce8f0e5ea06d6caeba1ba45eaf2a918be556ed
+
+
                         let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]} Click here.</a></span>`
                         conversationArea.innerHTML += link
                     }
