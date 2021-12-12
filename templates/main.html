@@ -153,7 +153,6 @@ input:focus{
         chatForm.onsubmit = (e) =>{
             e.preventDefault()
             if (chatForm.msg.value != ""){
-
                 let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
                 conversationArea.innerHTML += userInput
 
@@ -165,7 +164,7 @@ input:focus{
                     // console.log(data.value);
                     let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
                     
-                    if (data["intent"] == "buybooks"){
+                    if (data["intent"] == "buyproduct"){
                         let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]} Click here.</a></span>`
                         conversationArea.innerHTML += link
                     }
