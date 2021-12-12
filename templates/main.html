@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -10,14 +11,14 @@
 </head>
 
 <style>
-*{
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-}
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: 'Ubuntu', sans-serif;
+    }
 
-.app-head{
+    .app-head {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -27,113 +28,121 @@
         color: white;
         margin-bottom: 10px;
     }
-input{
-    width: 180px;
-    margin: 10px;
-    font-size: 15px;
-    padding: 10px 8px;
-    border-radius: 5px;
-    border: 2px solid #e9e8e9;
-}
-button{
-    width: 100px;
-    padding: 10px;
-    height: 30px;
-    display: flex;
-    border-radius: 5px;
-    justify-content: center;
-    font-weight: bold;
-    background: #fbaa33;
-    border: none;
-    color: white;
-    align-items: center;
-    width: 100px;
-    transition: width 0.5s ease;
-}
-button:hover{
-    cursor:pointer;
-    width: 150px;
-}
 
-input:focus{
-    outline: none;
-}
-.box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.chat-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.name{
-    color: white;
-    width: 80%;
-    background:#fbaa33 ;
-    padding: 15px;
-    font-weight: bold;
-}
-#conversation-area{
-    width: 80%;
-    height: 60vh;
-    border: 0.5px solid grey;
-    padding: 20px;
-    overflow-y: scroll;
-    word-break: keep-all;
+    input {
+        width: 180px;
+        margin: 10px;
+        font-size: 15px;
+        padding: 10px 8px;
+        border-radius: 5px;
+        border: 2px solid #e9e8e9;
+    }
 
-}
-.message{
-    display: block;
-    min-width: 150px;
-    margin-bottom: 10px;
-    max-width: 50%;
-    min-height: 40px;
-    padding: 10px; 
-    line-height: 20px;
-    font-size: 16px;
-    background:#3E4042;
-    color: #ffffff;
-    border-radius: 5px;
-}
+    button {
+        width: 100px;
+        padding: 10px;
+        height: 30px;
+        display: flex;
+        border-radius: 5px;
+        justify-content: center;
+        font-weight: bold;
+        background: grey;
+        border: none;
+        color: white;
+        align-items: center;
+        width: 100px;
+        transition: width 0.5s ease;
+    }
 
-.message.user{
-    background: #fbaa33;
-}
-.message a{
-    color: white;
-    text-decoration: none;
-}
+    button:hover {
+        cursor: pointer;
+        width: 150px;
+    }
 
-.message a:hover{
-    cursor:pointer;
-}
+    input:focus {
+        outline: none;
+    }
+
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .name {
+        color: black;
+        width: 80%;
+        padding: 15px;
+        font-weight: bold;
+    }
+
+    #conversation-area {
+        width: 80%;
+        height: 60vh;
+        border: 0.5px solid grey;
+        padding: 20px;
+        overflow-y: scroll;
+        word-break: keep-all;
+
+    }
+
+    .message {
+        display: block;
+        min-width: 150px;
+        margin-bottom: 10px;
+        max-width: 50%;
+        min-height: 40px;
+        padding: 10px;
+        line-height: 20px;
+        font-size: 16px;
+        background: grey;
+        color: black;
+        border-radius: 5px;
+    }
+
+    .message.user {
+        background: royalblue;
+    }
+
+    .message a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .message a:hover {
+        cursor: pointer;
+    }
 </style>
 
 <body>
-    <div class = "app-head">
-        <h2>  Online Shopping Chatbot Website</h2>  
+    <div class="app-head">
+        <h2> Online Shopping Chatbot Website</h2>
     </div>
-    
+
     <div class="app-body">
         <form id="chat-form">
-            
+
             <div class="box">
-                <input type ="text" name ="msg" id = "user-input" placeholder="Enter your message ">
+                <input type="text" name="msg" id="user-input" placeholder="Enter your message ">
                 <button>Submit</button>
             </div>
         </form>
         <div>
         </div>
-        <div class = "chat-box">
+        <div class="chat-box">
             <span class="name">ECOM Chatbot</span>
-            <div id ="conversation-area">
+            <div id="conversation-area">
                 <!-- <span class="message bot">Bot: Hello there.</span> -->
             </div>
         </div>
-            
+
     </div>
 </body>
 <script>
@@ -145,59 +154,70 @@ input:focus{
         return x;
     }
 
-    window.onload = function(){
+    window.onload = function () {
         chatForm = document.getElementById("chat-form")
         conversationArea = document.getElementById('conversation-area')
 
-        
-        chatForm.onsubmit = (e) =>{
+
+        chatForm.onsubmit = (e) => {
             e.preventDefault()
+<<<<<<< HEAD
             if (chatForm.msg.value != ""){
                 let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>` 
+=======
+            if (chatForm.msg.value != "") {
+
+                let userInput = `<span class = "message user"> User: ${chatForm.msg.value}</span>`
+>>>>>>> e0ce8f0e5ea06d6caeba1ba45eaf2a918be556ed
                 conversationArea.innerHTML += userInput
 
                 chatForm.msg.value = ""
-                
-                $.get('/get_bot', {msg: userInput}).done((data) => {
+
+                $.get('/get_bot', { msg: userInput }).done((data) => {
                     console.log(data);
                     data = JSON.parse(data)
                     // console.log(data.value);
                     let botOutput = `<span class = "message bot"> Bot: ${data["response"]}</span>`
+<<<<<<< HEAD
                     
                     if (data["intent"] == "buyproduct"){
+=======
+
+                    if (data["intent"] == "buybooks") {
+>>>>>>> e0ce8f0e5ea06d6caeba1ba45eaf2a918be556ed
                         let link = `<span class = "message bot"> Bot: <a href="./products">  ${data["response"]} Click here.</a></span>`
                         conversationArea.innerHTML += link
                     }
-                    else if (data["intent"] == "goodbye"){
+                    else if (data["intent"] == "goodbye") {
                         localStorage.clear()
                         console.log("clear");
                         let link = `<span class = "message bot"> Bot:  ${data["response"]}</a></span>`
                         conversationArea.innerHTML += link
                     }
-                    else if (data["intent"] == "payment"){    
+                    else if (data["intent"] == "payment") {
                         let link = `<span class = "message bot"> Bot: <a href="./payment"> ${data["response"]} Click here </a></span>`
                         conversationArea.innerHTML += link
                     }
-                    
-                    else{
+
+                    else {
                         conversationArea.innerHTML += botOutput
                     }
                 })
             }
         }
-        if (localStorage.getItem("products") != undefined){
+        if (localStorage.getItem("products") != undefined) {
             console.log(localStorage.getItem("products"))
             let items = JSON.parse(localStorage.getItem("products"))
             let botOutput = `<span class = "message bot"> Bot: You have chosen these items: <br> `
-            
-            for (i of items){
-                botOutput += `-  ${i.book} - ${i.author} - ${numberWithCommas(i.price)} VND. <br> `  
+
+            for (i of items) {
+                botOutput += `-  ${i.book} - ${i.author} - ${numberWithCommas(i.price)} VND. <br> `
             }
             botOutput += `</span>`
             conversationArea.innerHTML += botOutput
-            conversationArea.innerHTML += `<span class = "message bot">Bot: If you want to order these items.<br> Ask me: "How do i order?" </span>` 
+            conversationArea.innerHTML += `<span class = "message bot">Bot: If you want to order these items.<br> Ask me: "How do i order?" </span>`
         }
-        if (localStorage.getItem("payment-info") != undefined){
+        if (localStorage.getItem("payment-info") != undefined) {
             let info = JSON.parse(localStorage.getItem("payment-info"))
             console.log(info);
 
@@ -215,6 +235,6 @@ input:focus{
         }
 
     }
-  </script>
+</script>
 
 </html>
